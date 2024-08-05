@@ -1,0 +1,17 @@
+Domain: akademie.tuv.com/
+
+Hi!
+During testing, it was discovered that the website's email change functionality can be bypassed using email aliases. This vulnerability allows an attacker to use an alias of an existing email to change the email address of another account,Users' email addresses can be manipulated, an Attacker can use victim email without email verification causing confusion and potential privacy issues, potentially leading to account takeover scenarios.
+
+The Base Point Of This Issue: It's like email verification bypass, Attacker can use Victim email alias without email verification and can messed up his account like ordering unnecessary training courses etc.
+
+Steps to Reproduce:
+
+Create two accounts: Account A (original email: original@example.com) and Account B.
+In Account B, change the email to an alias of Account A (e.g., original+alias@example.com) and now login with this email you will see you re loged in without email verification
+Perform a password change on Account B.
+Notice that Account A receives the password change notification for Account B.
+Observe that Account B actions are reflected in notifications to Account A without proper email confirmation.
+
+Impact
+An Attacker can use victim email alias without account verification.

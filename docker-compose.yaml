@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  tomcat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_tomcat
+    ports:
+      - "9999:8080"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: student
+      DB_USER: tuan
+      DB_PASSWORD: password
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: student
+      MYSQL_USER: tuan
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./DB/data.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  mysql_data:
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+<user>
+<username>abcde</username>
+<email>johndoe@example.com</email>
+<phone>+1 (555) 1234567</phone>
+<fullname>John Doe</fullname>
+<role>0</role>
+</user>
+<user>
+<username>johndoe</username>
+<email>johndoe@example.com</email>
+<phone>+1 (555) 1234567</phone>
+<fullname>John Doe</fullname>
+<role>1</role>
+</user>
+</users>

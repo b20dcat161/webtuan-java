@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Submit Answer</title>
+</head>
+<body>
+<h1>Nộp đáp án</h1>
+
+<form action="#" th:action="@{/submit-answer}" method="post">
+    <label for="challengeId">Chọn hint:</label>
+    <select name="challengeId" id="challengeId" required>
+        <option th:each="challenge : ${challenges}"
+                th:value="${challenge.id}"
+                th:text="${challenge.hint}"></option>
+    </select>
+    <br/>
+    <label for="answer">Answer:</label>
+    <input type="text" name="answer" id="answer" required/>
+    <br/>
+    <button type="submit">Submit</button>
+</form>
+
+<p th:text="${message}"></p>
+<p th:text="${fileContent}"></p>
+
+</body>
+</html>

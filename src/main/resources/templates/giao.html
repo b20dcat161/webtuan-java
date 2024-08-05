@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Submissions</title>
+</head>
+<body>
+<h1>Submissions of Student ID: <span th:text="${studentId}"></span></h1>
+
+<!-- Hiển thị danh sách các file đã nộp -->
+<h2>Submitted Files</h2>
+<table>
+    <thead>
+    <tr>
+        <th>File Name</th>
+        <th>Download</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="submission : ${submissions}">
+        <td th:text="${submission.fileName}"></td>
+        <td><a th:href="@{/uploads/{fileName}(fileName=${submission.fileName})}" download>Download</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

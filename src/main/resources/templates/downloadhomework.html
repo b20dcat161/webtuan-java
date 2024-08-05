@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Download Homework</title>
+</head>
+<body>
+<h1>Tải đề và upload đáp án</h1>
+
+
+<form action="#" th:action="@{/uploadsubmission}" method="post" enctype="multipart/form-data">
+    <label for="homeworkId">Homework:</label>
+    <select name="homeworkId" id="homeworkId">
+        <option th:each="homework : ${homeworks}" th:value="${homework.id}" th:text="${homework.fileName}"></option>
+    </select>
+    <input type="file" name="file"/>
+    <input type="hidden" name="userId" th:value="${id}" /> <!-- Thay đổi theo userId thực tế -->
+    <button type="submit">Submit</button>
+</form>
+
+
+<h2>Bài tập:</h2>
+<ul>
+    <li th:each="homework : ${homeworks}">
+        <a th:href="@{/downloadfile(fileId=${homework.id})}" th:text="${homework.fileName}"></a>
+
+    </li>
+    <div th:if="${fileLink}">
+        <a th:href="@{${fileLink}}">Download the file</a>
+    </div>
+</ul>
+
+<p th:text="${message}"></p>
+</body>
+</html>

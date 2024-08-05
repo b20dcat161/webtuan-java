@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Media Conversion</title>
+</head>
+<body>
+    <h1>Convert MP4 to M4A</h1>
+    <form th:action="@{/convert-mp4-to-m4a}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Convert</button>
+    </form>
+
+    <div th:if="${message != null}">
+        <p th:text="${message}"></p>
+    </div>
+</body>
+</html>

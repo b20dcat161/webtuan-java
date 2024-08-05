@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload and Display Users</title>
+</head>
+<body>
+<h1>Upload XML</h1>
+
+<!-- Form for file upload -->
+<form th:action="@{/abc}" method="post" enctype="multipart/form-data">
+    <input type="file" name="xmlFile" accept=".xml"/>
+    <button type="submit">Upload</button>
+</form>
+
+<!-- Display users if the list is not empty -->
+<div th:if="${users != null}">
+    <h2>Uploaded Users</h2>
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Full Name</th>
+                <th>Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user, iterStat : ${users}">
+                <td><input type="text" th:name="'users[' + ${iterStat.index} + '].username'" th:value="${user.username}" /></td>
+                <td><input type="text" th:name="'users[' + ${iterStat.index} + '].email'" th:value="${user.email}" /></td>
+                <td><input type="text" th:name="'users[' + ${iterStat.index} + '].phone'" th:value="${user.phone}" /></td>
+                <td><input type="text" th:name="'users[' + ${iterStat.index} + '].fullname'" th:value="${user.fullname}" /></td>
+                <td><input type="text" th:name="'users[' + ${iterStat.index} + '].role'" th:value="${user.role}" /></td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+    <h1>Upload XML và lưu</h1>
+
+    <!-- Form for file upload -->
+    <form th:action="@{/saveUsers}" method="post" enctype="multipart/form-data">
+        <input type="file" name="xmlFile" accept=".xml"/>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Display users if the list is not empty -->
+
+
+</div>
+
+</body>
+</html>

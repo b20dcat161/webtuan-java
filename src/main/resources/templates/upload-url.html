@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Upload URL</title>
+</head>
+<body>
+<h1>Nhập URL để tải xuống</h1>
+<form action="#" th:action="@{/upload-url}" method="post">
+    <label for="url">URL:</label>
+    <input type="text" id="url" name="url" required>
+    <button type="submit">Preview</button>
+</form>
+</body>
+</html>

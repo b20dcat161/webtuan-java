@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Backup and Import</title>
+</head>
+<body>
+<h1>Backup and Import Users</h1>
+
+<!-- Backup Form -->
+<form action="#" th:action="@{/backup}" method="post">
+    <button type="submit">Backup Users</button>
+</form>
+
+<!-- Download Backup Form -->
+<form action="#" th:action="@{/backup/download}" method="get">
+    <button type="submit">Download Backup</button>
+</form>
+
+<!-- Import Backup Form -->
+<form action="#" th:action="@{/backup/import}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".ser" />
+    <button type="submit">Import Backup</button>
+</form>
+
+<!-- Display messages -->
+<p th:text="${message}"></p>
+</body>
+</html>

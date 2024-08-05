@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Preview</title>
+</head>
+<body>
+<h1>Xem trước nội dung</h1>
+
+<!-- Link to open the content in a new tab or window -->
+<a th:href="@{${fileUrl}}" target="_blank">Xem nội dung</a>
+
+<!-- Link to return to the previous page -->
+<a href="#" th:href="@{/upload-url}">Quay lại</a>
+</body>
+</html>

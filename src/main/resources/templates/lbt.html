@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Upload Answer File</title>
+</head>
+<body>
+<h1>Upload Answer File</h1>
+<form action="#" th:action="@{/lbt}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+</form>
+
+<h1>Uploaded Answer Files</h1>
+<table>
+    <thead>
+    <tr>
+        <th>File Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="file : ${files}">
+        <td th:text="${file.fileName}">File Name</td>
+        <td>
+            <a th:href="@{${file.filePath}}" download>Download</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

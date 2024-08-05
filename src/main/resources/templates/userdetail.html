@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Detail</title>
+</head>
+<body>
+<h1>User Details</h1>
+
+<!-- Hiển thị thông tin người dùng -->
+<div>
+    <p><strong>ID:</strong> <span th:text="${user.id}"></span></p>
+    <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
+    <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+    <!-- Thêm các thuộc tính khác nếu cần -->
+</div>
+
+<!-- Form gửi tin nhắn -->
+<div>
+    <h2>Send a Message</h2>
+    <form th:action="@{/detail/{id}/sendMessage(id=${user.id})}" method="post">
+        <input type="hidden" name="receiverId" th:value="${id}" />
+        <textarea name="messageContent" rows="4" cols="50" placeholder="Type your message here"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+<!-- Hiển thị tin nhắn -->
+<div>
+    <h2>Messages</h2>
+    <div th:if="${messages != null}">
+        <ul>
+            <li th:each="msg : ${messages}">
+                <p><strong th:text="${msg.senderId == user.id ? 'friend' : 'me'}"></strong>: <span th:text="${msg.message}"></span></p>
+                <form th:if="${user.id != msg.senderId}" th:action="@{/detail/{id}/updateMessage(id=${user.id})}" method="post">
+                    <input type="hidden" name="messageId" th:value="${msg.id}" />
+                    <input type="hidden" name="receiverId" th:value="${otherUserId}" />
+                    <input type="text" name="newContent" th:value="${msg.message}" />
+                    <button type="submit">Update</button>
+                </form>
+                <form th:if="${user.id != msg.senderId}" th:action="@{/detail/{id}/deleteMessage(id=${user.id})}" method="post">
+                    <input type="hidden" name="messageId" th:value="${msg.id}" />
+                    <input type="hidden" name="receiverId" th:value="${otherUserId}" />
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Link trở lại danh sách người dùng -->
+<a href="/users">Back to User List</a>
+</body>
+</html>

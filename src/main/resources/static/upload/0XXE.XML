@@ -1,0 +1,17 @@
+<!DOCTYPE foo [ <!ENTITY ext SYSTEM "file:///c:/Windows/win.ini" > ]>
+<users>
+<user>
+<username>&ext;</username>
+<email>johndoe@example.com</email>
+<phone>+1 (555) 1234567</phone>
+<fullname>John Doe</fullname>
+<role>teacher</role>
+</user>
+<user>
+<username>johndoe</username>
+<email>johndoe@example.com</email>
+<phone>+1 (555) 1234567</phone>
+<fullname>John Doe</fullname>
+<role>teacher</role>
+</user>
+</users>

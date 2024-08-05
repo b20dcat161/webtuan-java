@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Upload Homework</title>
+</head>
+<body>
+<h1>Upload Homework File</h1>
+<form action="#" th:action="@{/uploadhomework}" th:object="${file}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file"/>
+    <input type="hidden" name="userId" th:value="${id}" /><!-- Thay đổi theo userId thực tế -->
+    <button type="submit">Upload</button>
+</form>
+<p th:text="${message}"></p>
+</body>
+</html>

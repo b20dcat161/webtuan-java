@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+</head>
+<body>
+<h1>Upload File</h1>
+<form action="#" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+</form>
+
+<!-- Display message if available -->
+<div th:if="${message}" th:text="${message}"></div>
+
+<!-- Display file link if available -->
+<div th:if="${fileLink}">
+    <a th:href="@{${fileLink}}">Download the file</a>
+</div>
+</body>
+</html>

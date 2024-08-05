@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Files</title>
+</head>
+<body>
+<h1>Uploaded Files</h1>
+
+<h1>Upload Assignment File</h1>
+<form action="#" th:action="@{/bt}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+</form>
+<div th:if="${files != null}" class="mt-5">
+    <table>
+        <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="file : ${files}">
+            <td th:text="${file.fileName}">File Name</td>
+            <td>
+                <a th:href="@{${file.filePath}}" download>Download</a>
+                <form th:action="@{/bt/delete}" method="post" style="display:inline;">
+                    <input type="hidden" name="fileId" th:value="${file.id}" />
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
